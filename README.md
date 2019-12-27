@@ -17,7 +17,7 @@ koa2 + graphql + koa-graphql + mongoose
 mongodb
 
 ## 项目搭建及源码实现
-* 数据库部分：
+* 数据库部分：<br/>
 使用的是mongodb数据库，这里对于该数据库的安装等不做赘述。
 
 默认已经 具备mongodb的环境。启动数据库。
