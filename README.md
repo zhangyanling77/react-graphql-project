@@ -18,6 +18,7 @@ mongodb
 
 ## 项目搭建及源码实现
 * 数据库部分：<br/>
+
 使用的是mongodb数据库，这里对于该数据库的安装等不做赘述。
 
 默认已经 具备mongodb的环境。启动数据库。
@@ -33,16 +34,16 @@ mongodb
   mkdir react-graphql-project && cd react-graphql-project
 ```
 * 后端部分：
-- 1）创建项目
+1）创建项目
 ```bash
   mkdir server && cd server
   npm init -y
 ```
-- 2）安装项目依赖
+2）安装项目依赖
 ```bash
   yarn add koa koa-grphql koa2-cors koa-mount koa-logger graphql
 ```
-- 3）配置启动命令
+3）配置启动命令
 package.json文件
 ```javascript
 {
@@ -67,7 +68,7 @@ package.json文件
   }
 }
 ```
-- 4）业务开发
+4）业务开发
 index.js
 ```javascript
 const Koa = require('koa');
@@ -177,7 +178,6 @@ const Product = new GraphQLObjectType({
   )
 })
 
-
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
@@ -262,14 +262,14 @@ module.exports = new GraphQLSchema({
   mutation: RootMutation
 })
 ```
-- 5）启动项目
+5）启动项目
 ```bash
 yarn start
 ```
 访问 http://localhost:4000/graphql 看到数据库操作playground界面。可进行一系列数据库crud操作.
 
 * 前端部分：
-- 1）创建项目
+1）创建项目
 ```bash
 npx create-react-app react-graphql-project --template typescript
 ```
