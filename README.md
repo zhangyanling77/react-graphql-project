@@ -276,6 +276,7 @@ yarn start
 npx create-react-app react-graphql-project --template typescript
 ```
 删除其中无用的文件，以待开发。
+
 2）配置webpack
 ```bash
 yarn add react-app-rewired customize-cra
@@ -350,7 +351,8 @@ module.exports = override(
   "extends": "./paths.json"
 }
 ```
-重启项目后生效.
+重启项目后生效。
+
 3）安装其他项目依赖
 ```bash
 yarn add graphql apollo-boost @apollo/react-hooks
