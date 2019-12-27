@@ -33,7 +33,7 @@ mongodb
 ```bash
   mkdir react-graphql-project && cd react-graphql-project
 ```
-* 后端部分：
+* 后端部分：<br/>
 1）创建项目
 ```bash
   mkdir server && cd server
@@ -268,7 +268,7 @@ yarn start
 ```
 访问 http://localhost:4000/graphql 看到数据库操作playground界面。可进行一系列数据库crud操作.
 
-* 前端部分：
+* 前端部分：<br/>
 1）创建项目
 ```bash
 npx create-react-app react-graphql-project --template typescript
