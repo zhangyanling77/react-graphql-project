@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Table, Modal, Row, Col, Button, Divider, Tag, Form, Input, Select, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -139,7 +139,7 @@ interface FormProps {
   categories: Array<Category>
 }
 
-const AddForm:React.FC<FormProps> = ({handleOk, handleCancel, categories}) => {
+const AddForm:React.FC<FormProps> = memo(({handleOk, handleCancel, categories}) => {
   let [product, setProduct] = useState<Product>({ name: '', categoryId: [] });
   let [addProduct] = useMutation(ADD_PRODUCT);
 
@@ -190,6 +190,6 @@ const AddForm:React.FC<FormProps> = ({handleOk, handleCancel, categories}) => {
       </Form>
     </Modal>
   )
-}
+})
 
-export default ProductList;
+export default memo(ProductList);
