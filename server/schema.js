@@ -79,7 +79,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(Product),
       args: {},
       async resolve(parent, args){
-        let result = await ProductModel.find()
+        let result = await ProductModel.find().sort('-_id') // 根据添加顺序倒序排
         return result 
       }
     }
