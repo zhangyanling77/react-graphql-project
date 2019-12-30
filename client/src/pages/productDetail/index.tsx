@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import { Card, List } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PRODUCT } from '@/api';
@@ -46,4 +46,4 @@ const ProductDetail: React.FC = (props:any) => {
 }
 
 
-export default ProductDetail;
+export default memo(ProductDetail);
