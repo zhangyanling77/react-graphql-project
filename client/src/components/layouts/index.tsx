@@ -14,9 +14,8 @@ const Layouts: React.FC = (props:any) => {
   }, [path])
   
   return (
-    <Layout className="layout">
+    <Layout>
       <Header>
-        <div className="logo" />
         <Menu
           theme="dark"
           mode="horizontal"
