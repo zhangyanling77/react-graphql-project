@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 // 创建数据库连接
-const conn = mongoose.createConnection('mongodb://localhost/graphql',{ useNewUrlParser: true, useUnifiedTopology: true });
+const conn = mongoose.createConnection('mongodb://localhost:27017/graphql',{ useNewUrlParser: true, useUnifiedTopology: true });
 
 conn.on('open', () => console.log('数据库连接成功！'));
 
