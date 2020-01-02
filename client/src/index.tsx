@@ -9,6 +9,13 @@ const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql'
 })
 
+// 本地缓存数据
+client.cache.writeData({
+  data: {
+    isLogin: false
+  }
+})
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
