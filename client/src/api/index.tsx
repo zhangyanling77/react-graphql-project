@@ -1,5 +1,27 @@
 import { gql } from 'apollo-boost';
 
+// 获取登录状态
+export const GET_LOGINSTATUS = gql`
+  query{
+    isLogin @client
+  }
+`;
+
+// 查询所有商品分类
+export const GET_CATEGORIES = gql`
+  query{
+    getCategories{
+      id
+      name
+      products{
+        id
+        name
+      }
+    }
+  }
+`;
+
+// 查询所有商品
 export const GET_PRODUCTS = gql`
   query{
     getProducts{
