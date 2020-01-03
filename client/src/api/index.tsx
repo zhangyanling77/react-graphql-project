@@ -83,7 +83,7 @@ export const ADD_PRODUCT = gql`
 export const DELETE_PRODUCT = gql`
   mutation($id: String!){
     deleteProduct(id: $id){
-      id,
+      id
       name
     }
   }
@@ -93,15 +93,29 @@ export const DELETE_PRODUCT = gql`
 export const GET_PRODUCT = gql`
   query($id: String!){
     getProduct(id: $id){
-      id,
-      name,
+      id
+      name
       category{
-        id,
-        name,
+        id
+        name
         products{
-          id,
+          id
           name
         }
+      }
+    }
+  }
+`;
+
+// 修改商品
+export const UPDATE_PRODUCT = gql`
+  mutation($id: String!, $name: String!, $categoryId:String!){
+    updateProduct(id: $id, name: $name, category: $categoryId){
+      id
+      name
+      category{
+        id
+        name
       }
     }
   }
