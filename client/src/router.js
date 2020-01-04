@@ -6,6 +6,7 @@ import { Spin } from 'antd';
 const Layouts = lazy(() => import('@/components/layouts'));
 const ProductList = lazy(() => import('@/pages/productlist'));
 const ProductDetail = lazy(() => import('@/pages/productdetail'));
+const Profile = lazy(() => import('@/pages/profile'));
 
 
 const RouterComponent = () => {
@@ -14,8 +15,9 @@ const RouterComponent = () => {
       <Suspense fallback={<Spin size="large" />}>
         <Layouts>
           <Switch>
-            <Route path="/" exact={true} component={ProductList}></Route>
-            <Route path="/detail/:id" component={ProductDetail}></Route>
+            <Route path="/" exact={true} component={ProductList} />
+            <Route path="/detail/:id" component={ProductDetail} />
+            <Route path="/profile" component={Profile} />
           </Switch>
         </Layouts>
       </Suspense>
