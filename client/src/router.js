@@ -18,6 +18,7 @@ const RouterComponent = () => {
             <Route path="/" exact={true} component={ProductList} />
             <Route path="/detail/:id" component={ProductDetail} />
             <Route path="/profile" component={Profile} />
+            <Route render={() =><h1>404 Not Found</h1>} />
           </Switch>
         </Layouts>
       </Suspense>
