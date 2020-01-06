@@ -21,7 +21,8 @@ const client = new ApolloClient({
 // 本地缓存数据
 client.cache.writeData({
   data: {
-    isLogin: localStorage.getItem('token') ? true : false
+    isLogin: localStorage.getItem('token') ? true : false,
+    userName: ''
   }
 })
 
