@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost';
 export const GET_LOGINSTATUS = gql`
   query{
     isLogin @client
+    userName @client
   }
 `;
 
