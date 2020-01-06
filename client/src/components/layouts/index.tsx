@@ -12,6 +12,7 @@ const Layouts: React.FC = (props:any) => {
   let [loginStatus, setLoginStatus] = useState<boolean>(false);
   // console.log(props)
   let path = props.location.pathname;
+  let history = props.history;
   const { data } = useQuery(GET_LOGINSTATUS);
 
   useEffect(()=> {
@@ -46,7 +47,7 @@ const Layouts: React.FC = (props:any) => {
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}> ©2019 Created by zhangyanling. </Footer>
-      {loginStatus && <LoginForm closeForm={() => setLoginStatus(false)}/>}
+      {loginStatus && <LoginForm history={history} closeForm={() => setLoginStatus(false)}/>}
     </Layout>
   )  
 }
