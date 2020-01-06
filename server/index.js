@@ -32,20 +32,18 @@ app.use(cors({
 
 // 用户列表
 let userList = [
-  {
+   {
     username: 'admin',
-    password: '123456'
-  },
-  {
-    username: 'guest',
-    password: '123456'
+    password: '123456',
+    nickname: '一江西流',
+    address: '成都',
+    avatar: 'https://mirror-gold-cdn.xitu.io/168e08be61400b23518?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1'
   }
 ];
 // 当前url
 let currentUrl = '';
 // 登录
 router.post('/login', async ctx => {
-  console.log("login~~~~", ctx.req.body)
   // 登录接口
   let {
     username,
@@ -62,7 +60,12 @@ router.post('/login', async ctx => {
     ctx.body = {
       code: 0,
       data: {
-        username,
+        userinfo: {
+          username: user.username,
+          nickname: user.nickname,
+          address: user.address,
+          avatar: user.avatar
+        },
         token,
         url: currentUrl
       }
