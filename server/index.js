@@ -76,7 +76,7 @@ router.post('/login', async ctx => {
 });
 // 验证
 router.get('/validate', async (ctx) => {
-  let token = ctx.headers['token'];
+  let token = ctx.headers['Authorization'];
   if (!token) {
     ctx.body = {
       code: 1,
