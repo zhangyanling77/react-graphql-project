@@ -20,11 +20,12 @@ const Login: React.FC<LoginProps> = ({closeForm}) => {
     const response =  await fetch('http://localhost:4000/login', { method: 'POST', headers:{'Content-Type': 'application/json'}, body: JSON.stringify(loginInfo)});
     const result = await response.json();
     // console.log(result)
-    let { code, data:{url, token} } = result;
+    let { code, data:{username, url, token} } = result;
     if(code === 0){
       client.writeData({ data: { isLogin: true }})
       message.success('登录成功！');
       localStorage.setItem('token', token)
+      localStorage.setItem('username', username)
       history.push('/profile')
       closeForm()
     } else {
