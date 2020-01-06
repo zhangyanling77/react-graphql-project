@@ -1,8 +1,9 @@
 import React, {memo} from 'react';
-import { Form, Input, Icon, Button, Modal } from 'antd';
+import { Form, Input, Icon, Button, Modal, message } from 'antd';
 
 interface LoginProps {
-  closeForm: any
+  closeForm: any,
+  history: any
 }
 
 interface LoginState {
@@ -11,10 +12,22 @@ interface LoginState {
 }
 
 const Login: React.FC<LoginProps> = ({closeForm}) => {
-  let [loginInfo, setloginInfo] = useState<LoginState>({username: '', password: ''})
+  let [loginInfo, setloginInfo] = useState<LoginState>({username: '', password: ''});
+  const client = useApolloClient();
 
   const handleSubmit = async() => {
-    console.log(loginInfo)
+//     console.log(loginInfo)
+    const response =  await fetch('http://localhost:4000/login', { method: 'POST', headers:{'Content-Type': 'application/json'}, body: JSON.stringify(loginInfo)});
+    const result = await response.json();
+    // console.log(result)
+    let { code, url, token } = result;
+    if(code === 0){
+      client.writeData({ data: { isLogin: true }})
+      message.success('登录成功！', 3);
+      localStorage.setItem('token', token)
+      history.push('/profile')
+      closeForm()
+    }
   }
   
   return (
