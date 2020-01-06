@@ -34,7 +34,7 @@ const Layouts: React.FC = (props:any) => {
           <Menu.Item key="/profile"><Link to="/profile">个人中心</Link></Menu.Item>
         </Menu>
         <div style={{position:'absolute', right: 50, top: 0}}>
-          {!data.isLogin ? <a onClick={() => setLoginStatus(true)}>登录</a> : <img 
+          {!data.isLogin ? <a onClick={() => setLoginStatus(true)}>登录</a> : userInfo && <img 
           alt="header" 
           style={{width: 40, height: 40, borderRadius: '50%'}} 
           src={userInfo.avatar} />}
