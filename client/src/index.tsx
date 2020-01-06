@@ -4,11 +4,12 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import App from './router';
 import * as serviceWorker from './serviceWorker';
+
+const token = localStorage.getItem('token');
 // 创建apollo客户端
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
-  request: async (operation) => {
-    const token = await localStorage.getItem('token');
+  request: (operation) => {
     operation.setContext({
       headers: {
         authorization: token ? `Bearer ${token}` : ''
@@ -20,7 +21,7 @@ const client = new ApolloClient({
 // 本地缓存数据
 client.cache.writeData({
   data: {
-    isLogin: false
+    isLogin: token ? true : false
   }
 })
 
