@@ -6,7 +6,15 @@ import App from './router';
 import * as serviceWorker from './serviceWorker';
 // 创建apollo客户端
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  request: async (operation) => {
+    const token = await localStorage.getItem('token');
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  }
 })
 
 // 本地缓存数据
