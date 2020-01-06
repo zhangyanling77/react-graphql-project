@@ -20,7 +20,7 @@ const Profile:React.FC = () => {
           <Card
             title="基本信息"
           >
-            <p>name: zhangyanling77</p>
+            <p>name: {data.userName}</p>
             <p>address: Chengdu</p>
           </Card>
         </Col>
