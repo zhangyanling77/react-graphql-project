@@ -5,26 +5,29 @@ import { useQuery } from '@apollo/react-hooks';
 
 const Profile:React.FC = () => {
   const { data } = useQuery(GET_LOGINSTATUS);
-  
+  let userinfo = JSON.parse(localStorage.getItem('userinfo') as string)
+  // console.log(data, userinfo)
   return (
     <>
-      {data.isLogin ? <Row>
+      {data.isLogin ? 
+        userinfo && <Row>
         <Col span={24}>
           <img 
             alt="header" 
             style={{width: 80, height: 80, borderRadius: '50%', border: '2px solid #1890ff', margin: 15}} 
-            src="https://mirror-gold-cdn.xitu.io/168e08be61400b23518?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" />
-          <span style={{fontSize:20, fontWeight: 700}}>一江西流</span>
+            src={userinfo.avatar} />
+          <span style={{fontSize:20, fontWeight: 700}}>{userinfo.nickname}</span>
         </Col>
         <Col span={24}>
           <Card
             title="基本信息"
           >
-            <p>name: {data.userName}</p>
-            <p>address: Chengdu</p>
+            <p>name: {userinfo.username}</p>
+            <p>address: {userinfo.address}</p>
           </Card>
         </Col>
-      </Row>:<h1>请登录</h1>}
+      </Row>
+      :<h1>请登录</h1>}
     </>
   )
 }
