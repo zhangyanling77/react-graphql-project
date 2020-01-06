@@ -39,6 +39,7 @@ const Layouts: React.FC = (props:any) => {
           src="https://mirror-gold-cdn.xitu.io/168e08be61400b23518?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" />}
           {/* <Divider type="vertical" />
           <a>注册</a> */}
+          {data.userName && <span style={{color:'white', fontSize: 18, margin: '0 10px'}}>{data.userName}</span>}
         </div>
       </Header>
       <Content style={{ padding: '50px 50px 0 50px' }}>
