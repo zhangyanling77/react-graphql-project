@@ -62,11 +62,7 @@ const Profile:React.FC = () => {
                 pageSize: 3,
               }}
               dataSource={listData}
-              footer={
-                <div>
-                  <b>ant design</b> footer part
-                </div>
-              }
+              footer={null}
               renderItem={item => (
                 <List.Item
                   key={item.title}
