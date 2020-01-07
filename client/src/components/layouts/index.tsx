@@ -1,27 +1,39 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Layout, Menu, Divider  } from 'antd';
+import { Layout, Menu, Divider, message, Popconfirm } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import LoginForm from '@/components/login';
 import { GET_LOGINSTATUS } from '@/api';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useApolloClient } from '@apollo/react-hooks';
 
 const { Header, Content, Footer } = Layout
 
 const Layouts: React.FC = (props:any) => {
+  const client = useApolloClient();
+  // console.log(props)
   let [selectKey, setSelectKey] = useState<string>('/');
   let [loginStatus, setLoginStatus] = useState<boolean>(false);
-  // console.log(props)
+  
   let path = props.location.pathname;
   let history = props.history;
   const { data } = useQuery(GET_LOGINSTATUS);
   const userInfo = JSON.parse(localStorage.getItem('userinfo') as string);
-
+  
   useEffect(()=> {
+    // console.log(data)
     setSelectKey(path)
-  }, [path])
+  }, [path]);
+
+
+  const logout = () => {
+    localStorage.removeItem('userinfo');
+    localStorage.removeItem('token');
+    client.writeData({
+      data: { isLogin: false }
+    })
+  }
   
   return (
-    <Layout>
+    <Layout className="container-wrap">
       <Header>
         <Menu
           theme="dark"
@@ -34,12 +46,18 @@ const Layouts: React.FC = (props:any) => {
           <Menu.Item key="/profile"><Link to="/profile">个人中心</Link></Menu.Item>
         </Menu>
         <div style={{position:'absolute', right: 50, top: 0}}>
-          {!data.isLogin ? <a onClick={() => setLoginStatus(true)}>登录</a> : userInfo && <img 
+          {!data.isLogin ? <a onClick={() => setLoginStatus(true)}>登录</a> : userInfo && <Popconfirm
+            title="确定退出登录吗?"
+            onConfirm={logout}
+            okText="确定"
+            cancelText="取消"
+          >
+          <img 
           alt="header" 
-          style={{width: 40, height: 40, borderRadius: '50%'}} 
-          src={userInfo.avatar} />}
+          style={{width: 40, height: 40, borderRadius: '50%', cursor: 'pointer'}} 
+          src={userInfo.avatar} /></Popconfirm>}
           {/* <Divider type="vertical" />
-          <a>注册</a> */}
+          <a onClick={() => message.info('功能尚未开发,敬请期待~')}>注册</a> */}
           {userInfo && <span style={{color:'white', fontSize: 18, margin: '0 10px'}}>{userInfo.username}</span>}
         </div>
       </Header>
