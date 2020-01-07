@@ -38,6 +38,13 @@ let userList = [
     nickname: '一江西流',
     address: '成都',
     avatar: 'https://mirror-gold-cdn.xitu.io/168e08be61400b23518?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1'
+  },
+  {
+    username: 'guest',
+    password: '123456',
+    nickname: '湖畔余光',
+    address: '北京',
+    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
   }
 ];
 // 当前url
