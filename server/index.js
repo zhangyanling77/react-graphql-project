@@ -1,5 +1,5 @@
 const Koa = require('koa');
-const mount = require('koa-mount');
+// const mount = require('koa-mount');
 const graphqlHTTP = require('koa-graphql');
 const Router = require('koa-router');
 const cors = require('koa2-cors'); // 解决跨域
@@ -81,40 +81,6 @@ router.post('/login', async ctx => {
     ctx.body = {
       code: 1,
       data: '登录失败，请检查账号密码'
-    }
-  }
-});
-// 验证
-router.get('/validate', async (ctx) => {
-  let token = ctx.headers['Authorization'];
-  if (!token) {
-    ctx.body = {
-      code: 1,
-      data: '用户未登录'
-    }
-  } else {
-    try {
-      let user = jwt.decode(token, secret);
-      console.log(user);
-      console.log(user, '----', {
-        user,
-        token,
-        url: currentUrl
-      });
-      ctx.body = {
-        code: 0,
-        data: {
-          ...user,
-          token,
-          url: currentUrl
-        }
-      }
-    } catch (e) {
-      console.log(e)
-      ctx.body = {
-        code: 1,
-        data: 'token不正确'
-      }
     }
   }
 });
