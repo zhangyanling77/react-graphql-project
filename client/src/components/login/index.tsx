@@ -1,5 +1,6 @@
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import { Form, Input, Icon, Button, Modal, message } from 'antd';
+import { useApolloClient } from '@apollo/react-hooks';
 
 interface LoginProps {
   closeForm: any,
@@ -11,7 +12,7 @@ interface LoginState {
   password: string;
 }
 
-const Login: React.FC<LoginProps> = ({closeForm}) => {
+const Login: React.FC<LoginProps> = ({closeForm, history}) => {
   let [loginInfo, setloginInfo] = useState<LoginState>({username: '', password: ''});
   const client = useApolloClient();
 
