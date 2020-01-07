@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/react-hooks';
 const listData:Array<any> = [];
 for (let i = 0; i < 6; i++) {
   listData.push({
-    title: `代表作 ${i}`,
+    title: `订单 ${i}`,
     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     description:
       'Ant Design, a design language for background applications, is refined by Ant UED Team.',
@@ -50,7 +50,7 @@ const Profile:React.FC = () => {
             <h3>地址: <b>{userinfo.address}</b></h3>
           </Card>
           <Card
-            title="代表作品"
+            title="订单列表"
           >
             <List
               itemLayout="vertical"
