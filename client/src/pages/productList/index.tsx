@@ -42,7 +42,7 @@ const ProductList: React.FC = () => {
     setCurrProduct({
       id: record.id,
       name: record.name,
-      categoryId: record.category?.id
+      categoryId: record.category!.id
     })
   }
    
