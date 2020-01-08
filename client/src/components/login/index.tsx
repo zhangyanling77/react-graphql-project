@@ -3,7 +3,7 @@ import { Form, Input, Icon, Button, Modal, message } from 'antd';
 import { useApolloClient } from '@apollo/react-hooks';
 
 interface LoginProps {
-  closeForm: any,
+  closeForm: () => void,
   history: any
 }
 
@@ -16,7 +16,7 @@ const Login: React.FC<LoginProps> = ({closeForm, history}) => {
   let [loginInfo, setloginInfo] = useState<LoginState>({username: '', password: ''});
   const client = useApolloClient();
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     // console.log(loginInfo)
     const response =  await fetch('http://localhost:4000/login', { 
       method: 'POST', 
