@@ -3,8 +3,8 @@ import { Form, Input, Icon, Button, Modal, message } from 'antd';
 import { useApolloClient } from '@apollo/react-hooks';
 
 interface LoginProps {
-  closeForm: () => void,
-  history: any
+  closeForm: () => void;
+  history: any;
 }
 
 interface LoginState {
