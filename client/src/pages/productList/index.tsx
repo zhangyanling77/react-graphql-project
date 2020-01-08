@@ -1,5 +1,5 @@
 import React, { useState, memo } from 'react';
-import { Table, Modal, Row, Col, Button, Divider, Tag, Form, Input, Select, Popconfirm } from 'antd';
+import { Table, Row, Col, Button, Divider, Tag, Popconfirm, Form, Input, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { CATEGORIES_PRODUCTS, GET_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '@/api';
@@ -112,7 +112,41 @@ const ProductList: React.FC = () => {
     <div>
       <Row style={{padding: '0 0 20px 0'}}>
         <Col span={24}>
-          <Button type="primary" onClick={() => setVisible(true)}>新增</Button>
+          <Form layout='inline'>
+            <Form.Item>
+              <Button type="primary" onClick={() => setVisible(true)}>新增</Button>
+            </Form.Item>
+            <Form.Item label="商品ID">
+              <Input 
+                placeholder="请输入"
+                style={{width: 200}} 
+              />
+            </Form.Item>
+            <Form.Item label="商品名称">
+              <Input 
+                placeholder="请输入"
+                style={{width: 200}} 
+              />
+            </Form.Item>
+            <Form.Item label="商品分类" >
+              <Select 
+                placeholder="请选择" 
+                style={{width: 200}}
+              >
+                {
+                  getCategories.map((item: Category) => (
+                    <Option key={item.id} value={item.id}>{item.name}</Option>
+                  ))
+                }
+              </Select>
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" onClick={() => {}}>查询</Button>
+            </Form.Item>
+            <Form.Item>
+              <Button type="default" onClick={() => {}}>重置</Button>
+            </Form.Item>
+          </Form>
         </Col>
       </Row>
       <Row>
