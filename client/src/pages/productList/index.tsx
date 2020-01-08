@@ -146,8 +146,8 @@ const ProductList: React.FC = () => {
  * 新增产品Modal
  */
 interface FormProps {
-  handleClose: () => void,
-  categories: Array<Category>
+  handleClose: () => void;
+  categories: Array<Category>;
 }
 
 const AddForm:React.FC<FormProps> = memo(({handleClose, categories}) => {
