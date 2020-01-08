@@ -4,12 +4,12 @@ import { Link, withRouter } from 'react-router-dom';
 import LoginForm from '@/components/login';
 import { GET_LOGINSTATUS } from '@/api';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
+import './index.less';
 
 const { Header, Content, Footer } = Layout
 
 const Layouts: React.FC = (props:any) => {
   const client = useApolloClient();
-  // console.log(props)
   let [selectKey, setSelectKey] = useState<string>('/');
   let [loginStatus, setLoginStatus] = useState<boolean>(false);
   
@@ -23,7 +23,7 @@ const Layouts: React.FC = (props:any) => {
     setSelectKey(path)
   }, [path]);
 
-
+  // 登出
   const logout = () => {
     localStorage.removeItem('userinfo');
     localStorage.removeItem('token');
@@ -45,7 +45,7 @@ const Layouts: React.FC = (props:any) => {
           <Menu.Item key="/"><Link to="/">商品管理</Link></Menu.Item>
           <Menu.Item key="/profile"><Link to="/profile">个人中心</Link></Menu.Item>
         </Menu>
-        <div style={{position:'absolute', right: 50, top: 0}}>
+        <div className='header-info'>
           {!data.isLogin ? <a onClick={() => setLoginStatus(true)}>登录</a> : userInfo && <Popconfirm
             title="确定退出登录吗?"
             onConfirm={logout}
@@ -54,15 +54,15 @@ const Layouts: React.FC = (props:any) => {
           >
           <img 
           alt="header" 
-          style={{width: 40, height: 40, borderRadius: '50%', cursor: 'pointer'}} 
+          className='header-img' 
           src={userInfo.avatar} /></Popconfirm>}
           {/* <Divider type="vertical" />
           <a onClick={() => message.info('功能尚未开发,敬请期待~')}>注册</a> */}
-          {userInfo && <span style={{color:'white', fontSize: 18, margin: '0 10px'}}>{userInfo.username}</span>}
+          {userInfo && <span className='header-name'>{userInfo.username}</span>}
         </div>
       </Header>
       <Content style={{ padding: '50px 50px 0 50px' }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+        <div className='content-wrap'>
           {props.children}
         </div>
       </Content>
