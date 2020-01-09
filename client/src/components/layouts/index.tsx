@@ -52,12 +52,11 @@ const Layouts: React.FC = (props:any) => {
             okText="确定"
             cancelText="取消"
           >
-          <img 
-          alt="header" 
-          className='header-img' 
-          src={userInfo.avatar} /></Popconfirm>}
-          {/* <Divider type="vertical" />
-          <a onClick={() => message.info('功能尚未开发,敬请期待~')}>注册</a> */}
+            <img 
+            alt="header" 
+            className='header-img' 
+            src={userInfo.avatar} />
+          </Popconfirm>}
           {userInfo && <span className='header-name'>{userInfo.username}</span>}
         </div>
       </Header>
