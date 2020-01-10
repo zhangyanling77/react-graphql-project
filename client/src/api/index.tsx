@@ -120,3 +120,21 @@ export const UPDATE_PRODUCT = gql`
     }
   }
 `;
+
+// 根据条件查询商品列表
+export const GET_PRODUCTS_CONDITIONS = gql`
+  query($id: String, $name: String, $categoryId: String){
+    getProductsByConditions(id: $id, name: $name, category: $categoryId){
+      id
+      name
+      category{
+        id
+        name
+        products{
+          id
+          name
+        }
+      }
+    }
+  }
+`;
