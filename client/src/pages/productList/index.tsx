@@ -15,6 +15,7 @@ const ProductList: React.FC = () => {
   let [currProduct, setCurrProduct] = useState<Product>({id: '', name: '', categoryId: ''});
   let [pageSize, setPageSize] = useState<number|undefined>(10);
   let [current, setCurrent] = useState<number|undefined>(1);
+  let [offset, setOffset] = useState<number|undefined>(0);
   
   const { loading, error, data } = useQuery(CATEGORIES_PRODUCTS);
   const [deleteProduct] = useMutation(DELETE_PRODUCT);
@@ -97,15 +98,17 @@ const ProductList: React.FC = () => {
   ];
 
   const handleClose = () => {
-    setVisible(false)
-    setuVisible(false)
+    setVisible(false);
+    setuVisible(false);
   }
 
   const handleChange = (pagination: { current?:number, pageSize?:number}) => {
     // console.log(pagination)
     const { current, pageSize } = pagination
-    setPageSize(pageSize)
-    setCurrent(current)
+    const offset = (current! - 1) * pageSize!
+    setPageSize(pageSize);
+    setCurrent(current);
+    setOffset(offset);
   }
 
   return (
