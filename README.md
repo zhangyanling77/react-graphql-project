@@ -42,7 +42,7 @@ mongodb
 ```
 2）安装项目依赖
 ```bash
-  yarn add koa koa-grphql koa2-cors koa-mount koa-logger graphql
+  yarn add koa koa-grphql koa2-cors koa-router koa-logger graphql jwt-simple koa-bodyparser
 ```
 3）配置启动命令
 package.json文件
@@ -60,10 +60,13 @@ package.json文件
   "license": "MIT",
   "dependencies": {
     "graphql": "^14.5.8",
+    "jwt-simple": "^0.5.6",
     "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-graphql": "^0.8.0",
     "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
     "koa2-cors": "^2.0.6",
     "mongoose": "^5.7.11"
   }
@@ -106,18 +109,23 @@ yarn add react-app-rewired customize-cra
 然后在根目录下新建config-overrides.js文件，以做webpack的相关配置。<br/>
 安装前端UI组件库antd，并配置按需加载、路径别名支持等。
 ```bash
-yarn add antd babel-plugin-import
+yarn add antd babel-plugin-import less less-loader
 ```
 config-overrides.js
 ```javascript 
-const { override, fixBabelImports, addWebpackAlias } = require('customize-cra');
-const path = require('path')
+const { override, fixBabelImports, addWebpackAlias, addLessLoader } = require('customize-cra');
+const path = require('path');
+
+process.env.GENERATE_SOURCEMAP = "false";
 
 module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',
     libraryDirectory: 'es',
     style: 'css'
+  }),
+  addLessLoader({
+    javascriptEnabled: true
   }),
   addWebpackAlias({
     "@": path.resolve(__dirname, "src/")              
@@ -184,10 +192,14 @@ yarn add react-router-dom @types/react-router-dom
 
 登录组件：src/components/login
 
-定义gql查询语句文件: api
+定义gql查询语句文件: src/api
  
-商品列表组件: src/pages/ProductList (已经实现商品列表展示、删除商品、新增商品等功能)
+商品列表组件: src/pages/productList (已经实现商品列表展示、删除商品、新增商品等功能)
 
-商品详情组件: src/pages/ProductDetail (根据ID查询商品详情及其所属商品分类下的所有商品)
+新增商品组件： src/pages/productList/add
 
-个人中心页面：src/pages/Profile
+修改商品组件： src/pages/productList/update
+
+商品详情组件: src/pages/productDetail (根据ID查询商品详情及其所属商品分类下的所有商品)
+
+个人中心页面：src/pages/profile
