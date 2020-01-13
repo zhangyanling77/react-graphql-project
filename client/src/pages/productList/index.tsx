@@ -2,8 +2,10 @@ import React, { useState, memo } from 'react';
 import { Table, Row, Col, Button, Divider, Tag, Popconfirm, Form, Input, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { CATEGORIES_PRODUCTS, GET_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '@/api';
+import { CATEGORIES_PRODUCTS, GET_PRODUCTS, DELETE_PRODUCT } from '@/api';
 import { Product, Category } from '@/types';
+import AddForm from './add';
+import UpdForm from './update';
 
 const { Option } = Select;
 /**
@@ -178,123 +180,5 @@ const ProductList: React.FC = () => {
     </div>
   )
 }
-
-/**
- * 新增产品Modal
- */
-interface FormProps {
-  handleClose: () => void;
-  categories: Array<Category>;
-}
-
-const AddForm:React.FC<FormProps> = memo(({handleClose, categories}) => {
-  let [product, setProduct] = useState<Product>({ name: '', categoryId: [] });
-  let [addProduct] = useMutation(ADD_PRODUCT);
-
-  const handleSubmit = async () => {
-    // 获取表单的值
-    await addProduct({
-      variables: product,
-      refetchQueries: [{
-        query: GET_PRODUCTS
-      }]
-    })
-    // 清空表单
-    setProduct({ name: '', categoryId: [] })
-    handleClose()
-  }
-  
-  return (
-    <Modal
-      title="新增产品"
-      visible={true}
-      onOk={handleSubmit}
-      okText="提交"
-      cancelText="取消"
-      onCancel={handleClose}
-      maskClosable={false}
-    >
-      <Form>
-        <Form.Item label="商品名称">
-          <Input 
-            placeholder="请输入" 
-            value={product.name} 
-            onChange={event => setProduct({ ...product, name: event.target.value })} 
-          />
-        </Form.Item>
-        <Form.Item label="商品分类">
-          <Select 
-            placeholder="请选择" 
-            value={product.categoryId} 
-            onChange={(value: string | []) => setProduct({ ...product, categoryId: value })}
-          >
-            {
-              categories.map((item: Category) => (
-                <Option key={item.id} value={item.id}>{item.name}</Option>
-              ))
-            }
-          </Select>
-        </Form.Item>
-      </Form>
-    </Modal>
-  )
-})
-
-// 修改
-interface updFormProps extends FormProps {
-  record: Product;
-}
-
-const UpdForm:React.FC<updFormProps> = memo(({record, handleClose, categories}) => {
-  let [updProduct, setUpdProduct] = useState<Product>(record);
-  let [updateProduct] = useMutation(UPDATE_PRODUCT)
-
-  const handleSubmit = async() => {
-    await updateProduct({
-      variables: updProduct,
-      refetchQueries: [{
-        query: GET_PRODUCTS
-      }]
-    })
-    // 清空表单
-    setUpdProduct({ id: '', name: '', categoryId: [] })
-    handleClose()
-  }
-
-  return (
-    <Modal
-      title="修改商品"
-      visible={true}
-      onOk={handleSubmit}
-      okText="提交"
-      cancelText="取消"
-      onCancel={handleClose}
-      maskClosable={false}
-    >
-      <Form>
-        <Form.Item label="商品名称">
-          <Input 
-            placeholder="请输入" 
-            value={updProduct.name} 
-            onChange={event => setUpdProduct({ ...updProduct, name: event.target.value })} 
-          />
-        </Form.Item>
-        <Form.Item label="商品分类">
-          <Select 
-            placeholder="请选择" 
-            value={updProduct.categoryId} 
-            onChange={(value: string | []) => setUpdProduct({ ...updProduct, categoryId: value })}
-          >
-            {
-              categories.map((item: Category) => (
-                <Option key={item.id} value={item.id}>{item.name}</Option>
-              ))
-            }
-          </Select>
-        </Form.Item>
-      </Form>
-    </Modal>
-  )
-})
 
 export default memo(ProductList);
