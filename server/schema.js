@@ -129,7 +129,6 @@ const RootMutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(parent, args){
-//         let result = await ProductModel.deleteOne({"_id": args.id})
         let result = await ProductModel.findByIdAndDelete(args.id)
         return result
       }
