@@ -28,7 +28,6 @@ const ProductList: React.FC = () => {
   const { getCategories, getProducts } = data
 
   const confirm = async (event?:any, record?:Product) => {
-    // console.log("详情",  record);
     await deleteProduct({
       variables: {
         id: record?.id

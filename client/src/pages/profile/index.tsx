@@ -28,8 +28,8 @@ const IconText:React.FC<IconProps> = ({ type, text }) => (
 
 const Profile:React.FC = () => {
   const { data } = useQuery(GET_LOGINSTATUS);
-  let userinfo = JSON.parse(localStorage.getItem('userinfo') as string)
-  // console.log(data, userinfo)
+  let userinfo = JSON.parse(localStorage.getItem('userinfo') as string);
+  
   return (
     <>
       {data.isLogin ? 

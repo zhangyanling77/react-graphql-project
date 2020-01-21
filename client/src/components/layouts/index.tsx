@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Layout, Menu, Divider, message, Popconfirm } from 'antd';
+import { Layout, Menu, Popconfirm } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import LoginForm from '@/components/login';
 import { GET_LOGINSTATUS } from '@/api';
@@ -19,7 +19,6 @@ const Layouts: React.FC = (props:any) => {
   const userInfo = JSON.parse(localStorage.getItem('userinfo') as string);
   
   useEffect(()=> {
-    // console.log(data)
     setSelectKey(path)
   }, [path]);
 
@@ -65,7 +64,7 @@ const Layouts: React.FC = (props:any) => {
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}> ©2019 Created by zhangyanling. </Footer>
+      <Footer style={{ textAlign: 'center' }}> ©2019-2020 Created by zhangyanling. </Footer>
       {loginStatus && <LoginForm history={history} closeForm={() => setLoginStatus(false)}/>}
     </Layout>
   )  

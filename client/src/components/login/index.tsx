@@ -17,7 +17,6 @@ const Login: React.FC<LoginProps> = ({closeForm, history}) => {
   const client = useApolloClient();
 
   const handleSubmit = async () => {
-    // console.log(loginInfo)
     const response =  await fetch('http://localhost:4000/login', { 
       method: 'POST', 
       headers:{
@@ -26,7 +25,6 @@ const Login: React.FC<LoginProps> = ({closeForm, history}) => {
       body: JSON.stringify(loginInfo)
     });
     const result = await response.json();
-    // console.log(result)
     let { code, data: { userinfo, url, token } } = result;
     if(code === 0){
       client.writeData({ data: { isLogin: true }})
