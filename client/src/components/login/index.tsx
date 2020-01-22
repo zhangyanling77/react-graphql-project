@@ -63,7 +63,7 @@ const Login: React.FC<LoginProps> = ({closeForm, history}) => {
           />
         </Form.Item>
         <Form.Item>
-          <Button type="primary">
+          <Button type="primary" onClick={handleSubmit}>
             提交
           </Button>
         </Form.Item>
