@@ -1,9 +1,16 @@
 
 
-### `yarn start`
+### 启动项目
+```bash
+yarn start
+```
 
-### `yarn test`
+### 测试
+```bash
+yarn test
+```
 
-### `yarn build`
-
-### `yarn eject`
+### 构建项目
+```bash
+yarn build
+```
