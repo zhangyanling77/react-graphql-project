@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Layout, Menu, Popconfirm } from 'antd';
+import { Layout, Menu, Divider, message, Popconfirm } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import LoginForm from '@/components/login';
 import { GET_LOGINSTATUS } from '@/api';
@@ -56,6 +56,8 @@ const Layouts: React.FC = (props:any) => {
             className='header-img' 
             src={userInfo.avatar} />
           </Popconfirm>}
+          {/* <Divider type="vertical" />
+          <a onClick={() => message.info('功能尚未开发,敬请期待~')}>注册</a> */}
           {userInfo && <span className='header-name'>{userInfo.username}</span>}
         </div>
       </Header>
