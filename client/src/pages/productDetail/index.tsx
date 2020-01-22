@@ -5,8 +5,8 @@ import { GET_PRODUCT } from '@/api';
 import { Product } from '@/types';
 
 const ProductDetail: React.FC = (props:any) => {
-  let _id = props.match.params.id;
-  let { loading, error, data } = useQuery(GET_PRODUCT,{
+  const _id = props.match.params.id;
+  const { loading, error, data } = useQuery(GET_PRODUCT,{
     variables: { id: _id }
   });
 
