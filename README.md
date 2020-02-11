@@ -194,9 +194,9 @@ yarn add react-router-dom @types/react-router-dom
 
 定义gql查询语句文件: src/api
  
-商品列表组件: src/pages/productList (已经实现商品列表展示、删除商品、新增商品等功能)
+商品列表组件: src/pages/productList (已经实现商品列表展示、删除商品、新增、修改商品等功能)
 
-新增商品组件： src/pages/productList/add
+新增商品组件： src/pages/productList/add 
 
 修改商品组件： src/pages/productList/update
 
