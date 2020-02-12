@@ -21,7 +21,9 @@ mongodb
 
 使用的是mongodb数据库，这里对于该数据库的安装等不做赘述。
 
-默认已经 具备mongodb的环境。启动数据库。
+默认已经你已经完具备mongodb的环境。启动数据库。
+
+这里以windows为例：
 
 到mongodb安装路径下，如C:\Program Files\MongoDB\Server\4.2\bin
 
