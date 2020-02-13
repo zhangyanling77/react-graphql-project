@@ -1,4 +1,7 @@
-
+### 安装依赖
+```bash
+yarn install
+```
 
 ### 启动项目
 ```bash
