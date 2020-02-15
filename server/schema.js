@@ -19,7 +19,7 @@ const Category = new GraphQLObjectType({
       products: {
         type: new GraphQLList(Product),
         async resolve(parent){
-          let result = await ProductModel.find({ category: parent.id })
+          const result = await ProductModel.find({ category: parent.id })
           return result
         }
       }
@@ -36,7 +36,7 @@ const Product = new GraphQLObjectType({
       category: {
         type: Category,
         async resolve(parent){
-          let result = await CategoryModel.findById(parent.category)
+          const result = await CategoryModel.findById(parent.category)
           return result
         }
       }
@@ -53,7 +53,7 @@ const RootQuery = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
       async resolve(parent, args){
-        let result = await CategoryModel.findById(args.id)
+        const result = await CategoryModel.findById(args.id)
         return result
       }
     },
@@ -61,7 +61,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(Category),
       args: {},
       async resolve(parent, args){
-        let result = await CategoryModel.find()
+        const result = await CategoryModel.find()
         return result
       }
     },
@@ -71,7 +71,7 @@ const RootQuery = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLString) }
       },
       async resolve(parent, args){
-        let result = await ProductModel.findById(args.id)
+        const result = await ProductModel.findById(args.id)
         return result 
       }
     },
@@ -79,7 +79,7 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(Product),
       args: {},
       async resolve(parent, args){
-        let result = await ProductModel.find().sort('-_id') // 根据添加顺序倒序排
+        const result = await ProductModel.find().sort('-_id') // 根据添加顺序倒序排
         return result 
       }
     }
@@ -95,7 +95,7 @@ const RootMutation = new GraphQLObjectType({
         name: { type: new GraphQLNonNull(GraphQLString) }
       },
       async resolve(parent, args){
-        let result = await CategoryModel.create(args)
+        const result = await CategoryModel.create(args)
         return result  
       }
     },
@@ -106,7 +106,7 @@ const RootMutation = new GraphQLObjectType({
         category: { type: new GraphQLNonNull(GraphQLString) }
       },
       async resolve(parent, args){
-        let result = await ProductModel.create(args)
+        const result = await ProductModel.create(args)
         return result 
       }
     },
@@ -118,8 +118,8 @@ const RootMutation = new GraphQLObjectType({
         category: { type: new GraphQLNonNull(GraphQLString) }
       },
       async resolve(parent, args){
-        let {id, name, category } = args;
-        let result = await ProductModel.findByIdAndUpdate(id, { name, category })
+        const {id, name, category } = args;
+        const result = await ProductModel.findByIdAndUpdate(id, { name, category })
         return result
       }
     },
@@ -129,7 +129,7 @@ const RootMutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLString) },
       },
       async resolve(parent, args){
-        let result = await ProductModel.findByIdAndDelete(args.id)
+        const result = await ProductModel.findByIdAndDelete(args.id)
         return result
       }
     }
