@@ -8,9 +8,6 @@ import AddForm from './add';
 import UpdForm from './update';
 
 const { Option } = Select;
-/**
- * 商品列表
- */
 const ProductList: React.FC = () => {
   let [visible, setVisible] = useState<boolean>(false);
   let [uVisible, setuVisible] = useState<boolean>(false);
@@ -104,7 +101,6 @@ const ProductList: React.FC = () => {
   }
 
   const handleChange = (pagination: { current?:number, pageSize?:number}) => {
-    // console.log(pagination)
     const { current, pageSize } = pagination
     const offset = (current! - 1) * pageSize!
     setPageSize(pageSize);
