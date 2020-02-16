@@ -5,7 +5,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import App from './router';
 import * as serviceWorker from './serviceWorker';
 
-// 创建apollo客户端
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
   request: (operation) => {
@@ -17,9 +16,7 @@ const client = new ApolloClient({
     })
   }
 })
-
-
-// 本地缓存数据
+// 设置本地状态 获取可通过@client方式
 client.cache.writeData({
   data: {
     isLogin: localStorage.getItem('token') ? true : false
