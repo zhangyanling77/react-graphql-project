@@ -19,10 +19,10 @@ const Layouts: React.FC = (props:any) => {
   const userInfo = JSON.parse(localStorage.getItem('userinfo') as string);
   
   useEffect(()=> {
+    // 保证路由与菜单选择同步
     setSelectKey(path)
   }, [path]);
 
-  // 登出
   const logout = () => {
     localStorage.removeItem('userinfo');
     localStorage.removeItem('token');
