@@ -2,12 +2,10 @@ import React, { Suspense, lazy, memo } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Spin } from 'antd';
 
-// 懒加载组件
 const Layouts = lazy(() => import('@/components/layouts'));
 const ProductList = lazy(() => import('@/pages/productlist'));
 const ProductDetail = lazy(() => import('@/pages/productdetail'));
 const Profile = lazy(() => import('@/pages/profile'));
-
 
 const RouterComponent = () => {
   return (
