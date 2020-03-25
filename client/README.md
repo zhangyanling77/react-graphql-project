@@ -2,7 +2,7 @@
 
 1）创建项目
 ```bash
-npx create-react-app react-graphql-project --template typescript
+npx create-react-app client --template typescript
 ```
 删除其中无用的文件，以待开发。
 
