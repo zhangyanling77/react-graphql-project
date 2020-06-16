@@ -1,22 +1,3 @@
----
-title: 基于graphql+react+apollo（前端）、koa+mongodb（后端）的项目实践
-date: 2020-06-08
-updated: 2020-06-16
-authors:
-  - zhangyanling77
-categories:
-  - Article
-  - Engineering
-tags:
-  - GraphQL
-  - Apollo
-  - Koa2
-  - mongodb
-
-original: https://juejin.im/post/5ede47a45188253684677f61
-toc: true
----
-
 ## 项目背景
 
 源于2019年11月16日FCC成都社区主办的Web全栈大会上尹吉峰老师的 `GraphQL` 的分享，让我产生了浓厚的兴趣。`GraphQL` 是一个用于 `API` 的查询语言，是使用基于类型系统来执行查询的服务端运行时（类型系统由你的数据定义）。一个 `GraphQL` 服务是通过定义类型和类型上的字段来创建的，然后给每个类型上的每个字段提供解析函数。
