@@ -10,3 +10,10 @@ export interface Product{
   category?: Category;
   categoryId?: string | [];
 }
+  
+export interface User {
+  username?: string;
+  nickname?: number;
+  address?: string;
+  avatar?: string;
+}
