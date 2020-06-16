@@ -66,7 +66,7 @@ const Layouts: React.FC = (props:any) => {
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}> ©2019-2020 Created by zhangyanling. </Footer>
+      <Footer style={{ textAlign: 'center' }}> ©2019 - {new Date().getFullYear()}</Footer>
       {loginStatus && <LoginForm history={history} closeForm={() => setLoginStatus(false)}/>}
     </Layout>
   )  
